@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+           
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: url('../bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  overflow-x: hidden;
+}
+    header {
+      text-align: center;
+      animation: fadeDown 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      background: linear-gradient(to right, cyan, #00f2fe, #1e3c72);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px cyan;
+    }
+
+    /* Navbar */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 25px 60px;
+  background: linear-gradient(90deg, #1cb5e0, #000046);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Stronger glow */
+  transition: box-shadow 0.3s ease;
+  height: 60px;
+}
+
+.navbar:hover {
+  box-shadow: 0 0 20px cyan;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: #00f5ff;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  text-shadow: 0 0 8px cyan;
+  color: #0ff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px 20px;
+      animation: fadeDown 1.5s ease-out;
+    }
+
+    .info-card {
+      flex: 1 1 220px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid cyan;
+      border-radius: 14px;
+      padding: 20px;
+      max-width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px cyan;
+    }
+
+    .info-card h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #aefbff;
+    }
+
+    .info-card p {
+      font-size: 0.95em;
+      color: #e0f7ff;
+    }
+
+    .heading-note {
+      text-align: center;
+      font-size: 1.3em;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      color: #aefbff;
+      font-style: italic;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 40px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid cyan;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .video-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px cyan;
+    }
+
+    .video-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .video-card span {
+      display: block;
+      padding: 15px;
+      font-size: 1.1em;
+      color: #aefbff;
+    }
+
+    .youtube-section {
+      text-align: center;
+      margin: 60px auto 40px;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+
+    .youtube-section h2 {
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      color: #aefbff;
+      text-shadow: 0 0 15px cyan;
+    }
+
+    .youtube-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .youtube-video {
+      flex: 1 1 300px;
+      max-width: 380px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 20px cyan;
+      transition: transform 0.3s ease;
+    }
+
+    .youtube-video:hover {
+      transform: scale(1.05);
+    }
+
+    .youtube-video img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .youtube-video span {
+      display: block;
+      padding: 10px;
+      color: #aefbff;
+      font-weight: 500;
+      background: rgba(0, 255, 255, 0.1);
+    }
+
+    @keyframes glowText {
+      from {
+        text-shadow: 0 0 10px cyan, 0 0 20px #00f2fe, 0 0 30px #00f2fe;
+      }
+      to {
+        text-shadow: 0 0 20px #0ff, 0 0 30px #00f2fe, 0 0 40px #00c3ff;
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+ 
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about/about.html">About</a></li>
+    <li><a href="../work/work.html">Work</a></li>
+    <li><a href="../creative/creative.html">Creative</a></li>
+    <li><a href="../projects/proj.html">Projects</a></li>
+    <li><a href="../contact/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+  <header>
+    <h1>Creative Projects ✨</h1>
+  </header>
+
+  <section class="info-cards">
+    <div class="info-card">
+      <h3>🎭 Short Film: Gulabi Mullu</h3>
+      <p>A powerful all-girls short film highlighting the sensitive topic of child abuse through emotional storytelling and bold visuals.</p>
+    </div>
+    <div class="info-card">
+      <h3>🎶 Campaign Songs & Jingles</h3>
+      <p>Composed catchy political campaign songs and advertisement jingles that brought creative edge to election promotions.</p>
+    </div>
+    <div class="info-card">
+      <h3>📚 Telugu Textbooks</h3>
+      <p>Developed innovative Telugu textbooks (Grades 1–5) for second language learners, blending fun with foundational grammar.</p>
+    </div>
+    <div class="info-card">
+      <h3>🎥 Mana TV Educational Films</h3>
+      <p>Produced and directed impactful educational videos aired on Mana TV to simplify complex lessons for young learners.</p>
+    </div>
+  </section>
+
+  <p class="heading-note">🎬Political Ads</p>
+
+  <section class="video-grid">
+    <a class="video-card" href="video.html?vid=video.mp4">
+      <img src="thumb0.png" alt="Short Film">
+      <span>Ad-1</span>
+    </a>
+
+    <a class="video-card" href="video.html?vid=video1.mp4">
+      <img src="thumb1.png" alt="Political Songs">
+      <span>Ad-2</span>
+    </a>
+
+    <a class="video-card" href="video.html?vid=video2.mp4">
+      <img src="thumb2.png" alt="Ads">
+      <span>Ad-3</span>
+    </a>
+
+    <a class="video-card" href="video.html?vid=video3.mp4">
+      <img src="thumb3.png" alt="Textbooks">
+      <span>Ad-4</span>
+    </a>
+
+    <a class="video-card" href="video.html?vid=video4.mp4">
+      <img src="thumb4.png" alt="Innovative Learning">
+      <span>Ad-5</span>
+    </a>
+
+    <a class="video-card" href="video.html?vid=video5.mp4">
+      <img src="thumb5.png" alt="Mana TV">
+      <span>Ad-6</span>
+    </a>
+  </section>
+
+
+
+  <!-- 🎞️ Short Films and Songs Section -->
+
+  <section class="youtube-section">
+    <h2>🎞️ Short Films and Songs</h2>
+    <div class="youtube-row">
+      <a class="youtube-video" href="https://youtu.be/AtkhrLCv3pE" target="_blank">
+        <img src="thumb6.png" alt="Gulabi Mullu">
+        <span>Gulabi Mullu</span>
+      </a>
+      <a class="youtube-video" href="https://youtu.be/SYG0z5wGewQ" target="_blank">
+        <img src="thumb7.png" alt="Corona Song">
+        <span>Corona Song by Adavi Rajababu</span>
+      </a>
+      <a class="youtube-video" href="https://youtu.be/Pd_nDSHpF1c" target="_blank">
+        <img src="thumb8.png" alt="Parugapu Mithrama">
+        <span>Parugapu Mithrama Song</span>
+      </a>
+    </div>
+  </section>
+ <!-- 📽️ Documentaries Section -->
+<section class="youtube-section">
+  <h2>📽️ Documentaries</h2>
+  <div class="youtube-row" style="
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+    scrollbar-width: thin;
+    scrollbar-color: cyan transparent;
+  ">
+
+    <!-- YouTube Video 1 -->
+    <a class="youtube-video" href="https://youtu.be/-Ka8ezy_aKo?si=sQJkzm3mbWyZ2PGs" target="_blank">
+      <img src="thumb9.png" alt="Mann ki Baat">
+      <span>Mann ki Baat</span>
+    </a>
+
+    <!-- YouTube Video 2 -->
+    <a class="youtube-video" href="https://youtu.be/VAKYwB8NfAw?si=bxgkFrHClvoF81KI" target="_blank">
+      <img src="thumb10.png" alt="Goka Raju College Project">
+      <span>Goka Raju Ranga Raju College Project</span>
+    </a>
+
+    <!-- YouTube Video 3 -->
+    <a class="youtube-video" href="https://youtu.be/HAgdFD6ViFM?si=wsbKXlbmw2J464eV" target="_blank">
+      <img src="thumb11.png" alt="Golden Jubilee">
+      <span>Golden Jubilee Celebrations</span>
+    </a>
+
+    <!-- Local MP4 video -->
+    <a class="youtube-video" href="video.html?vid=video6.mp4">
+      <img src="thumb12.png" alt="Village Documentary">
+      <span>🏡 A Village Documentary</span>
+    </a>
+
+  </div>
+</section>
+
+</body>
+</html>

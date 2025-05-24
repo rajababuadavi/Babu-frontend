@@ -1,0 +1,191 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.image-box {
+  position: absolute;
+  top: 20%;
+  left: clamp(2vw, 8vw, 12vw);         /* Responsive horizontal placement */
+        
+
+  width: clamp(220px, 22vw, 430px);    /* Smaller min width */
+  height: clamp(420px, 65vh, 650px);   /* Taller min height */
+
+  border: 3px solid cyan;
+  
+  box-shadow: 0 0 40px cyan;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+
+.glow-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-left: 5%;
+  filter: drop-shadow(0px 0px 8px rgba(0, 255, 255, 0.7)); /* Outline shadow effect */
+}
+
+
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 25px 60px;
+  background: linear-gradient(90deg, #1cb5e0, #000046);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); /* Stronger glow */
+  transition: box-shadow 0.3s ease;
+  height: 60px;
+}
+
+.navbar:hover {
+  box-shadow: 0 0 20px cyan;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: #00f5ff;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  text-shadow: 0 0 8px cyan;
+  color: #0ff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 90vh;
+  text-align: left;
+  padding-left: clamp(220px, 42vw, 50vw); /* more shift on large screens */
+  padding-right: 5vw;
+  animation: floatText 3s ease-in-out infinite;
+}
+
+.glow-text {
+  font-size: clamp(2.5rem, 5vw, 6rem); /* Scales beautifully */
+  color: #0ff;
+  text-shadow: 0 0 15px #0ff, 0 0 25px #0ff;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.typewriter {
+  color: white;
+  font-size: clamp(1.2rem, 2vw, 1.8rem); /* Responsive subtitle */
+  font-weight: 500;
+  display: inline-block;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.pop {
+  animation: pop 0.5s ease;
+}
+
+
+.cursor {
+  display: inline-block;
+  color: cyan;
+  font-weight: bold;
+  animation: blink-cursor 0.7s steps(1) infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.desc {
+  margin-top: 20px;
+  font-size: clamp(1rem, 1.5vw, 1.4rem); /* Responsive description */
+  color: #ccc;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  background: #00f5ff;
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-size: clamp(1rem, 1.2vw, 1.3rem);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 10px #00f5ff;
+}
+.btn:hover {
+  background: #0ff;
+  transform: scale(1.1);
+}
+
+
+
+/* Animations */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #0ff; }
+  100% { text-shadow: 0 0 25px #0ff, 0 0 35px #0ff; }
+}
+
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+

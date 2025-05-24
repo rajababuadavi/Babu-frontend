@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raja Babu Adavi | Portfolio</title>
+  <link rel="stylesheet" href="creative.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/about.html">About</a></li>
+      <li><a href="../work/work.html">Work</a></li>
+      <li><a href="../creative/creative.html">Creative</a></li>
+      <li><a href="../projects/proj.html">Projects</a></li>
+      <li><a href="../contact/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-content">
+    <div class="flipbook">
+      <div class="page visible">
+        <div class="page-card">
+          <div class="page-title">Creative Works and Contributions</div>
+          <div class="page-content">A deep dive into significant interviews and creative contributions from various fields.</div>
+          <div class="flip-btns">
+            <button onclick="nextPage()">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-card">
+          <div class="page-title">Notable Interviews</div>
+          <div class="page-content">
+            <div class="section-title">Artists & Film Makers:</div>
+            <div class="inline-list">
+              <span>Padma Shri Bapu,</span>
+              <span>Kodi Ramakrishna,</span>
+              <span>Sekhar Kammula,</span>
+              <span>Anil Ravipudi,</span>
+              <span>Nandini Reddy</span>
+            </div>
+
+            <div class="section-title">Dialogue Writers:</div>
+            <div class="inline-list">
+              <span>Paruchuri Venkateswara Rao,</span>
+              <span>Akella Suryanarayana,</span>
+              <span>Burra Sai Madhav</span>
+            </div>
+
+            <div class="section-title">Performing Artists:</div>
+            <div class="inline-list">
+              <span>Padma Shri Sobha Naidu,</span>
+              <span>Ananda Shankar Jayant,</span>
+              <span>Dr. Punjala Alekhya</span>
+            </div>
+
+            <div class="section-title">Actors:</div>
+            <div class="inline-list">
+              <span>Kaikala Satyanarayana,</span>
+              <span>Tanikella Bharani,</span>
+              <span>Kota Srinivasa Rao,</span>
+              <span>Jamuna,</span>
+              <span>Priyadarshi</span>
+            </div>
+
+            <div class="section-title">Poets & Writers:</div>
+            <div class="inline-list">
+              <span>Dasaradhi Rangacharya,</span>
+              <span>Gorati Venkanna,</span>
+              <span>Volga,</span>
+              <span>Devi Priya,</span>
+              <span>Khadeer Babu</span>
+            </div>
+
+            <div class="flip-btns">
+              <button onclick="prevPage()">Previous</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+    let currentPageIndex = 0;
+    const pages = document.querySelectorAll('.page');
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.remove('visible');
+        if (i === index) page.classList.add('visible');
+      });
+    }
+
+    function nextPage() {
+      if (currentPageIndex < pages.length - 1) {
+        currentPageIndex++;
+        showPage(currentPageIndex);
+      }
+    }
+
+    function prevPage() {
+      if (currentPageIndex > 0) {
+        currentPageIndex--;
+        showPage(currentPageIndex);
+      }
+    }
+
+    showPage(currentPageIndex);
+  </script>
+</body>
+</html>

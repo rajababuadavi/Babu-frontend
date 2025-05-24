@@ -1,0 +1,326 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(to bottom, #01042c, #043c68, #039ba6);
+  color: #c8f8ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 💫 Sci-Fi Background Glow Animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #00f0ff22, #001f2f 70%);
+  animation: rotateGlow 60s linear infinite;
+  z-index: 0;
+  opacity: 0.07;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 🔷 Navbar */
+.navbar {
+  background: rgba(0, 10, 20, 0.8);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 20px #00ffff20;
+  padding: 14px 30px;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.nav-links li a {
+  color: #8efeff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00fff0;
+  transition: width 0.3s ease;
+}
+.nav-links li a:hover {
+  color: #ffffff;
+}
+.nav-links li a:hover::before {
+  width: 100%;
+}
+
+/* 🧊 Flipbook Container */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  flex-direction: column;
+  z-index: 1;
+  position: relative;
+}
+
+/* 📘 Flipbook Pages */
+.flipbook {
+  width: 100%;
+  max-width: 1000px;
+  padding: 10px;
+  z-index: 2;
+}
+.page {
+  display: none;
+}
+.page.visible {
+  display: block;
+  animation: fadeInUp 0.6s ease;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 🔮 Futuristic Card */
+.page-card {
+  background: rgba(0, 15, 25, 0.85);
+  border: 1px solid #00cfff55;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15), inset 0 0 15px #00eaff15;
+  transition: all 0.3s ease;
+}
+
+/* 🌀 Aurora Glow */
+.page-card::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, transparent 30%, #00fff540, transparent 70%);
+  animation: pulseLight 5s ease-in-out infinite;
+  z-index: -1;
+  opacity: 0.1;
+}
+@keyframes pulseLight {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.25; }
+}
+
+/* 💬 Text */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #aefeff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+.page-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #d0faff;
+}
+.section-title {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #87e6f7;
+  border-left: 4px solid #00d0ff;
+  padding-left: 12px;
+}
+
+/* 🧿 Inline Skills */
+.inline-list {
+  margin-top: 12px;
+}
+.inline-list span {
+  display: inline-block;
+  background: rgba(0, 255, 255, 0.1);
+  color: #72ecff;
+  padding: 7px 12px;
+  margin: 5px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+.inline-list span:hover {
+  background: #00e7ff33;
+  transform: scale(1.05);
+}
+
+/* ⏭ Navigation Buttons */
+.flip-btns {
+  margin-top: 40px;
+  text-align: center;
+}
+button {
+  padding: 12px 26px;
+  background: linear-gradient(120deg, #00f0ff, #0099ff);
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #002b3f;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00f0ff44;
+  transition: 0.3s ease;
+}
+button:hover {
+  background: linear-gradient(120deg, #0099ff, #00e6ff);
+  box-shadow: 0 0 25px #00f0ffaa;
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .page-card {
+    padding: 25px;
+  }
+  .page-title {
+    font-size: 1.8rem;
+  }
+  .page-content {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+}
+/* ✨ Starfield Layer */
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00eaff;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: twinkle 4s infinite ease-in-out alternate;
+}
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+/* 💠 Grid Overlay */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: linear-gradient(to right, rgba(0,255,255,0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: rotate(45deg);
+  animation: moveGrid 90s linear infinite;
+  z-index: 0;
+}
+@keyframes moveGrid {
+  from { transform: rotate(45deg) translate(0, 0); }
+  to { transform: rotate(45deg) translate(-500px, -500px); }
+}
+
+/* 🧿 Floating Orbs */
+.floating-orbs {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.orb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #00f0ff 0%, #0088cc 60%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: floatOrb 20s linear infinite;
+}
+@keyframes floatOrb {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0.05;
+  }
+  100% {
+    transform: translateY(-200px) translateX(50vw);
+    opacity: 0.2;
+  }
+}
+
+/* 🌌 Aurora Light Curtains */
+.aurora {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to top,
+    rgba(0, 255, 255, 0.03),
+    rgba(0, 255, 255, 0.01) 1px,
+    transparent 2px
+  );
+  animation: auroraMove 30s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+@keyframes auroraMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -1000px; }
+}
+

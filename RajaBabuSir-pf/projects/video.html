@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Watch Video</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .close-btn {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      background-color: red;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 0 10px red;
+    }
+
+    .close-btn:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <button class="close-btn" onclick="window.location.href='proj.html'">❌ Close</button>
+  <video controls autoplay id="videoPlayer"></video>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoFile = urlParams.get('vid');
+    if (videoFile) {
+      document.getElementById("videoPlayer").src = videoFile;
+    } else {
+      document.body.innerHTML = "<h2 style='color: white;'>No video specified.</h2>";
+    }
+  </script>
+</body>
+</html>
