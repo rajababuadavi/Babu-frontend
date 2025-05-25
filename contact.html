@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Raja Babu Adavi</title>
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="animated-background"></div>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/about.html">About</a></li>
+      <li><a href="../work/work.html">Work</a></li>
+      <li><a href="../creative/creative.html">Creative</a></li>
+      <li><a href="../projects/proj.html">Projects</a></li>
+      <li><a href="../contact/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-container">
+    <h1 class="glow-title">Get in Touch</h1>
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <div id="formMessage"></div>
+    </form>
+
+    <div class="contact-info">
+      <i class="fas fa-phone-alt glowing-icon"></i>
+      <p class="phone-text">For more queries, call: <strong>7989394250</strong></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+
+      try {
+        const res = await fetch('https://babu-backend.onrender.com/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        if (res.ok) {
+          formMessage.textContent = 'Your message was sent successfully!';
+          formMessage.className = 'success';
+          form.reset();
+        } else {
+          throw new Error('Email failed');
+        }
+      } catch (err) {
+        formMessage.textContent = 'There was an error sending your message.';
+        formMessage.className = 'error';
+      }
+
+      formMessage.style.display = 'block';
+
+      setTimeout(() => {
+        formMessage.style.display = 'none';
+      }, 4000);
+    });
+  </script>
+</body>
+</html>

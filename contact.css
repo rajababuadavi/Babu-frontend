@@ -1,0 +1,60 @@
+@keyframes fadeGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#formMessage {
+  margin-top: 15px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  display: none;
+}
+
+#formMessage.success {
+  display: block;
+  color: #0f0;
+  animation: fadeGlow 0.8s ease-in-out;
+  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0;
+}
+
+#formMessage.error {
+  display: block;
+  color: #f00;
+  animation: fadeGlow 0.8s ease-in-out;
+  text-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00;
+}
+
+button[type="submit"] {
+  background-color: #0ff;
+  border: none;
+  padding: 10px 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0cf;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 5px #0ff;
+}
