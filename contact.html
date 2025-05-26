@@ -45,9 +45,9 @@
       e.preventDefault();
 
       const formData = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim()
       };
 
       try {
